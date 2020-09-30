@@ -3,3 +3,10 @@
   padding: 0;
   border-style: none;
 }
+
+li{
+  list-style: none;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #fff;
+}

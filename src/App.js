@@ -1,15 +1,18 @@
 import React,{useState} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layouts/Navbar';
 import User from './components/users/User';
 import axios from 'axios';
 import Search from './components/users/Search';
 import Alert from './components/layouts/Alert';
+import "./styles.css"
 
 require('dotenv').config();
 
 function App() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   // useEffect(() => {
   //   setLoading(true);
@@ -33,19 +36,21 @@ function App() {
   function clearUser(){
     setUsers([]);
   }
-  function alertUser(){
-    //noting
-  }
+  // function alertUser(isAlert){
+  //   setAlert(isAlert);
+  // }
 
   return (
-    <div>
-      <Navbar />
-      <div className="container-fluid">
-        <Alert onAlert={alertUser}/>
-        <Search onSearch={searchUser} onClear={clearUser} show={users.length>0?true:false}/>
-        <User loading={loading} users={users} />
+    <Router>
+      <div>
+        <Navbar />
+        <div className="container-fluid">
+          {/* <Alert onAlert={alertUser} isAlert={alert}/> */}
+          <Search onSearch={searchUser} onClear={clearUser} show={users.length>0?true:false}/>
+          <User loading={loading} users={users} />
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

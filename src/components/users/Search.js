@@ -8,10 +8,13 @@ function Search(props) {
     setSearch(e.target.value)
   }
   function handleClickSearch(){
-    
+    // if(search===''){
+    //   props.onAlert(true);
+    // }
+    // else{
       props.onSearch(search);
       setSearch("");
-    
+    // }    
   }
   function handleClickClear(){
     props.onClear();
