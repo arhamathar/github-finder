@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layouts/Navbar';
 import User from './components/users/User';
+import Home from './components/Home';
 import axios from 'axios';
 import Search from './components/users/Search';
 import Alert from './components/layouts/Alert';
@@ -42,14 +43,9 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Navbar />
-        <div className="container-fluid">
-          {/* <Alert onAlert={alertUser} isAlert={alert}/> */}
-          <Search onSearch={searchUser} onClear={clearUser} show={users.length>0?true:false}/>
-          <User loading={loading} users={users} />
-        </div>
-      </div>
+      <Switch>
+        <Route path = "/" component = "Home" />
+      </Switch>
     </Router>
   );
 }
